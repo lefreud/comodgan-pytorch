@@ -10,6 +10,15 @@ Input image<img src="imgs/ffhq_in.png" width=200> Mask<img src="imgs/ffhq_m.png"
 - Linux Machine
 - NVIDIA GPU
 
+## Setup
+
+If you are running this script on a remote machine, you can create a Jupyter Notebook config file named `jupter_notebook_config.py`.
+
+In my case, it contains :
+``
+c.NotebookApp.custom_display_url = 'http://some_hostname:8888'
+``
+
 ## Usage
 
 ```
