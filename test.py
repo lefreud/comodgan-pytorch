@@ -1,7 +1,7 @@
 import argparse
 import numpy as np
 import torch
-from co_mod_gan import Generator
+from modules.co_mod_gan import Generator
 from PIL import Image
 
 parser = argparse.ArgumentParser()
