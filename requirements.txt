@@ -7,3 +7,5 @@ dill
 opencv-python
 git+https://github.com/zengxianyu/pytorch-fid
 tqdm
+cython
+scikit-image
