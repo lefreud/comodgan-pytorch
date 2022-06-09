@@ -1,9 +1,5 @@
 import os
-
-import torch
-import numpy as np
 import random
-import matplotlib.pyplot as plt
 from inpainting.comodgan_inpainter import ComodganInpainter
 from utils import *
 from coco_utils import get_image_pairs
@@ -15,9 +11,7 @@ DEVICE = torch.device("cuda")
 
 
 def main():
-    torch.manual_seed(SEED)
-    np.random.seed(SEED)
-    random.seed(SEED)
+    seed_all(SEED)
 
     inpainter = ComodganInpainter(DEVICE)
 

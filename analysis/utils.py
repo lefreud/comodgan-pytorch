@@ -2,6 +2,14 @@ import cv2
 import torch
 import matplotlib.pyplot as plt
 import numpy as np
+import random
+
+
+def seed_all(seed):
+    torch.manual_seed(seed)
+    np.random.seed(seed)
+    random.seed(seed)
+    torch.cuda.manual_seed_all(seed)
 
 
 def get_image_tensor(image):
@@ -27,13 +35,15 @@ def display_tensor(result, mask=None, ax=None):
         plt.show()
 
 
-def get_mask_tensor(mask):
+def get_mask_tensor(mask, inverted=True):
     if isinstance(mask, str):
         mask = cv2.imread(mask)
 
     mask = cv2.resize(mask, (512, 512), cv2.INTER_NEAREST)
     if len(mask.shape) == 2:
         mask = mask[..., None]
-    mask = 1 - np.all(mask != [0, 0, 0], axis=-1).astype(int)
+    mask = np.all(mask != [0, 0, 0], axis=-1).astype(int)
+    if inverted:
+        mask = 1 - mask
     mask = torch.from_numpy(mask).unsqueeze(0).unsqueeze(0).float()
     return mask
